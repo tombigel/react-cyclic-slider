@@ -148,14 +148,6 @@ npm run test:coverage
 # Preview production build
 npm run preview
 
-# Build demo app
-npm run build
-
-# Build library
-npm run build:lib
-
-# Deploy to GitHub Pages with version bump
-npm run deploy:version
 ```
 
 This project uses:
