@@ -100,7 +100,7 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
 
       // Set up event handling for pointer movement and release
       element.setPointerCapture(pointerId);
-      element.addEventListener("pointermove", onPointerMove);
+      element.addEventListener("pointermove", onPointerMove, { passive: false });
       element.addEventListener("pointerup", () => {
         element.removeEventListener("pointermove", onPointerMove);
         element.releasePointerCapture(pointerId);
