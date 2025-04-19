@@ -5,21 +5,25 @@ Thank you for your interest in contributing to React Cyclic Slider! This documen
 ## Development Setup
 
 1. Fork the repository and clone your fork:
+
    ```bash
    git clone https://github.com/YOUR_USERNAME/react-cyclic-slider.git
    cd react-cyclic-slider
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Start the development server:
+
    ```bash
    npm start
    ```
-   This will run Vite and serve the demo application at http://localhost:5173/react-cyclic-slider/
+
+   This will run Vite and serve the demo application at <http://localhost:5173/react-cyclic-slider/>
 
 ## Development Workflow
 
@@ -61,6 +65,7 @@ We use ESLint for linting. Our configuration is in `.eslintrc.cjs`.
 ## Pull Requests
 
 1. Create a new branch for your feature or bugfix:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -68,6 +73,7 @@ We use ESLint for linting. Our configuration is in `.eslintrc.cjs`.
 2. Make your changes and commit them using descriptive commit messages
 
 3. Push changes to your fork:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -85,4 +91,4 @@ The maintainers will handle the release process, which includes:
 
 ## License
 
-By contributing to React Cyclic Slider, you agree that your contributions will be licensed under the project's MIT license. 
+By contributing to React Cyclic Slider, you agree that your contributions will be licensed under the project's MIT license.
