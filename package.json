@@ -7,9 +7,9 @@
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/es/index.js",
-      "require": "./dist/cjs/index.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/cjs/index.js"
     },
     "./theme/cyclic-slider-theme.css": "./dist/theme/cyclic-slider-theme.css"
   },
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tombigel/react-cyclic-slider.git"
+    "url": "git+https://github.com/tombigel/react-cyclic-slider.git"
   },
   "files": [
     "dist",
