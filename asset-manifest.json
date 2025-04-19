@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-cyclic-slider/static/css/main.f2a00a29.css",
+    "main.js": "/react-cyclic-slider/static/js/main.4be406fc.js",
+    "index.html": "/react-cyclic-slider/index.html",
+    "main.f2a00a29.css.map": "/react-cyclic-slider/static/css/main.f2a00a29.css.map",
+    "main.4be406fc.js.map": "/react-cyclic-slider/static/js/main.4be406fc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f2a00a29.css",
+    "static/js/main.4be406fc.js"
+  ]
+}
