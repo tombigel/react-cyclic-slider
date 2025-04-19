@@ -82,6 +82,7 @@ const App: React.FC = () => {
             label="Angle Slider"
             onChange={angleUpdateMode === 'change' ? setAngle : undefined}
             onInput={angleUpdateMode === 'input' ? setAngle : undefined}
+            unit="°"
           />
           
           <div className="demo-visualization">
@@ -129,6 +130,7 @@ const App: React.FC = () => {
             label="Hue Selector"
             onChange={hueUpdateMode === 'change' ? setHue : undefined}
             onInput={hueUpdateMode === 'input' ? setHue : undefined}
+            unit="hue"
           />
           
           <div className="demo-visualization">
@@ -173,6 +175,7 @@ const App: React.FC = () => {
             label="Hour Selector (12-hour clock)"
             onChange={hourUpdateMode === 'change' ? setHour : undefined}
             onInput={hourUpdateMode === 'input' ? setHour : undefined}
+            unit="hr"
           />
           
           <div className="demo-visualization">

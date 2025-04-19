@@ -32,6 +32,23 @@ describe('CyclicSlider', () => {
     expect(label.tagName).toBe('LABEL');
   });
   
+  it('displays unit suffix when unit prop is provided', () => {
+    render(<CyclicSlider value={45} unit="°" />);
+    
+    // Check if unit suffix is rendered
+    const unitSuffix = screen.getByText('°');
+    expect(unitSuffix).toBeInTheDocument();
+    expect(unitSuffix).toHaveClass('unit-suffix');
+  });
+  
+  it('does not display unit suffix when unit prop is not provided', () => {
+    render(<CyclicSlider value={45} />);
+    
+    // Check that there is no unit suffix element
+    const unitSuffix = document.querySelector('.unit-suffix');
+    expect(unitSuffix).not.toBeInTheDocument();
+  });
+  
   it('respects custom min, max, and step values', () => {
     render(
       <CyclicSlider

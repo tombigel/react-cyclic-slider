@@ -19,6 +19,7 @@ export interface CyclicSliderProps {
   max?: number;
   step?: number;
   className?: string;
+  unit?: string;
 }
 
 const CyclicSlider: React.FC<CyclicSliderProps> = ({
@@ -29,7 +30,8 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
   min = 0,
   max = 360,
   step = 1,
-  className = ''
+  className = '',
+  unit = ''
 }) => {
   const [value, setValue] = useState<number>(dataValue);
 
@@ -117,15 +119,18 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
           onPointerUp={updateDataOnMouseUp}
           onPointerDown={cyclicHandler}
         />
-        <input
-          type="number"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onInput={handleValueChange}
-          onChange={updateDataOnMouseUp}
-        />
+        <div className="input-with-unit">
+          <input
+            type="number"
+            min={min}
+            max={max}
+            step={step}
+            value={value}
+            onInput={handleValueChange}
+            onChange={updateDataOnMouseUp}
+          />
+          {unit && <span className="unit-suffix">{unit}</span>}
+        </div>
       </div>
     </>
   );

@@ -4,13 +4,16 @@ A React component for cyclic value selection, perfect for circular controls like
 
 ## Features
 
-- Cyclic value selection (wraps around min/max values)
-- Touch/pointer support
-- TypeScript support
-- Customizable min/max/step values
-- Separate theming system (use our theme or create your own)
-- Dual update modes (continuous or on release)
-- Built-in number input for precise value control
+Hey, here's what you get with this slider:
+
+- Values that loop around without getting stuck at the ends - perfect for things like angles or clock times
+- Works great with touch, mouse, or any pointer device
+- Fully TypeScript ready
+- Set your own min, max, and step values
+- Style it your way with a separate theming css file - use ours or roll your own
+- Choose how it updates: as you drag or only when you let go
+- Comes with a handy number input for when you need to be precise
+- Optional units display (°, px, %, etc.) right next to the number input
 
 ## Installation
 
@@ -54,6 +57,7 @@ function App() {
         value={angle}
         label="Angle (continuous updates)"
         onInput={handleContinuousUpdate}
+        unit="°"
       />
       
       {/* Updates only on release */}
@@ -64,6 +68,7 @@ function App() {
         value={angle}
         label="Angle (update on release)"
         onChange={handleReleaseUpdate}
+        unit="°"
       />
     </div>
   );
@@ -82,6 +87,7 @@ function App() {
 | onChange | function | undefined | Callback when value changes on pointer up (when released) |
 | onInput | function | undefined | Callback on every value change during dragging |
 | className | string | '' | Additional CSS class |
+| unit | string | '' | Optional unit display (°, px, %, etc.) next to the number input |
 
 ## Theming
 

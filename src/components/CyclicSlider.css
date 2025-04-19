@@ -20,7 +20,20 @@
   margin-right: 10px;
 }
 
+/* Input with unit layout */
+.cyclic-slider .input-with-unit {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .cyclic-slider input[type="number"] {
   width: 70px;
   text-align: center;
+}
+
+.cyclic-slider .unit-suffix {
+  margin-left: 4px;
+  font-size: 0.9em;
+  color: #666;
 } 
