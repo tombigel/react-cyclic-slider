@@ -23,17 +23,21 @@
 /* Input with unit layout */
 .cyclic-slider .input-with-unit {
   position: relative;
-  display: flex;
-  align-items: center;
+  display: inline-block;
 }
 
 .cyclic-slider input[type="number"] {
   width: 70px;
   text-align: center;
+  padding-right: 20px; /* Make space for the unit suffix */
 }
 
 .cyclic-slider .unit-suffix {
-  margin-left: 4px;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   font-size: 0.9em;
   color: #666;
+  pointer-events: none;
 } 

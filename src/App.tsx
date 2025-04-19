@@ -130,7 +130,7 @@ const App: React.FC = () => {
             label="Hue Selector"
             onChange={hueUpdateMode === 'change' ? setHue : undefined}
             onInput={hueUpdateMode === 'input' ? setHue : undefined}
-            unit="hue"
+            unit="°"
           />
           
           <div className="demo-visualization">
