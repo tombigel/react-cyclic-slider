@@ -151,6 +151,7 @@ npm run preview
 ```
 
 This project uses:
+
 - [Vite](https://vitejs.dev/) for fast development and optimized builds
 - [Vitest](https://vitest.dev/) for unit testing
 - [TypeScript](https://www.typescriptlang.org/) for type safety
