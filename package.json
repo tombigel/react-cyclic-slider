@@ -1,6 +1,6 @@
 {
   "name": "react-cyclic-slider",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Cyclic Slider React component for circular values like angles, hue, and more",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
