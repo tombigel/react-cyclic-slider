@@ -19,6 +19,10 @@
 .cyclic-slider input[type="range"] {
   flex: 1;
   margin-right: 10px;
+  touch-action: none; /* Prevents browser handling of gestures */
+  -webkit-user-select: none; /* Prevents text selection during drag */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent; /* Removes tap highlight */
 }
 
 /* Input with unit layout */

@@ -85,15 +85,17 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
       const onPointerMove = (e: PointerEvent) => {
         e.preventDefault();
         e.stopPropagation();
-        const newValue = Math.round(
-          e.offsetX % offsetWidth / offsetWidth * (max - min)
-        );
+        if (element.hasPointerCapture(pointerId)) {
+          const newValue = Math.round(
+            e.offsetX % offsetWidth / offsetWidth * (max - min)
+          );
 
-        const normalizedValue =
+          const normalizedValue =
           newValue < min ? max + newValue % max : newValue;
-        setValue(normalizedValue);
-        // Call onInput callback with the new value
-        onInput && onInput(normalizedValue);
+          setValue(normalizedValue);
+          // Call onInput callback with the new value
+          onInput && onInput(normalizedValue);
+        }
       };
 
       // Set up event handling for pointer movement and release
@@ -101,6 +103,7 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
       element.addEventListener("pointermove", onPointerMove);
       element.addEventListener("pointerup", () => {
         element.removeEventListener("pointermove", onPointerMove);
+        element.releasePointerCapture(pointerId);
         onChange && onChange(value);
       }, { once: true });
     },
