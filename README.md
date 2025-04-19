@@ -139,12 +139,29 @@ npm install
 # Start development server
 npm start
 
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Preview production build
+npm run preview
+
 # Build demo app
 npm run build
 
 # Build library
 npm run build:lib
+
+# Deploy to GitHub Pages with version bump
+npm run deploy:version
 ```
+
+This project uses:
+- [Vite](https://vitejs.dev/) for fast development and optimized builds
+- [Vitest](https://vitest.dev/) for unit testing
+- [TypeScript](https://www.typescriptlang.org/) for type safety
 
 ## Author
 
