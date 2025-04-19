@@ -1,0 +1,10 @@
+div {
+  padding: 1em;
+}
+div label {
+  display: block;
+  padding-bottom: 0.5em;
+}
+div input {
+  margin-right: 0.5em;
+}

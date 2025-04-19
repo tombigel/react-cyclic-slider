@@ -1,0 +1,11 @@
+{
+  "name": "react-cyclic-slider",
+  "version": "1.0.0",
+  "description": "a Cyclic Slider React component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tom Bigelajzen",
+  "license": "MIT"
+}
