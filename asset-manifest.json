@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-cyclic-slider/static/css/main.c4bc64fa.css",
-    "main.js": "/react-cyclic-slider/static/js/main.50c5a8b1.js",
+    "main.css": "/react-cyclic-slider/static/css/main.7d1d4f0f.css",
+    "main.js": "/react-cyclic-slider/static/js/main.7f4f5ca0.js",
     "index.html": "/react-cyclic-slider/index.html",
-    "main.c4bc64fa.css.map": "/react-cyclic-slider/static/css/main.c4bc64fa.css.map",
-    "main.50c5a8b1.js.map": "/react-cyclic-slider/static/js/main.50c5a8b1.js.map"
+    "main.7d1d4f0f.css.map": "/react-cyclic-slider/static/css/main.7d1d4f0f.css.map",
+    "main.7f4f5ca0.js.map": "/react-cyclic-slider/static/js/main.7f4f5ca0.js.map"
   },
   "entrypoints": [
-    "static/css/main.c4bc64fa.css",
-    "static/js/main.50c5a8b1.js"
+    "static/css/main.7d1d4f0f.css",
+    "static/js/main.7f4f5ca0.js"
   ]
 }
