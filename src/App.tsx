@@ -234,6 +234,14 @@ const App: React.FC = () => {
           >
             View on GitHub
           </a>
+          {' | '}
+          <a 
+            href="https://www.npmjs.com/package/react-cyclic-slider" 
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            View on npm
+          </a>
         </p>
         <p>
           <a 
