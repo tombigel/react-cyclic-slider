@@ -1,11 +1,102 @@
 {
   "name": "react-cyclic-slider",
   "version": "1.0.0",
-  "description": "a Cyclic Slider React component",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "A Cyclic Slider React component for circular values like angles, hue, and more",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./theme/cyclic-slider-theme.css": "./dist/theme/cyclic-slider-theme.css"
   },
-  "author": "Tom Bigelajzen",
-  "license": "MIT"
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test:coverage": "react-scripts test --coverage --watchAll=false",
+    "eject": "react-scripts eject",
+    "clean": "rimraf dist",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:theme": "mkdir -p dist/theme && cp src/theme/cyclic-slider-theme.css dist/theme/",
+    "build:lib": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types && npm run build:theme",
+    "prepublishOnly": "npm run build:lib",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tombigel/react-cyclic-slider.git"
+  },
+  "files": [
+    "dist",
+    "LICENSE.txt",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "keywords": [
+    "react",
+    "slider",
+    "cyclic",
+    "angle",
+    "component",
+    "circular",
+    "rotate",
+    "hue",
+    "wheel"
+  ],
+  "author": {
+    "name": "Tom Bigelajzen",
+    "url": "https://github.com/tombigel"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tombigel/react-cyclic-slider/issues"
+  },
+  "homepage": "https://tombigel.github.io/react-cyclic-slider",
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^14.3.1",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "gh-pages": "^6.3.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-scripts": "5.0.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }

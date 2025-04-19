@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/esm",
+    "module": "ESNext",
+    "target": "ES2020",
+    "moduleResolution": "node",
+    "declaration": false,
+    "sourceMap": true,
+    "noEmit": false,
+    "jsx": "react-jsx"
+  },
+  "exclude": [
+    "src/App.tsx",
+    "src/index.tsx",
+    "src/**/*.test.ts",
+    "src/**/*.test.tsx"
+  ],
+  "include": [
+    "src/components"
+  ]
+} 

@@ -1,0 +1,78 @@
+/**
+ * React Cyclic Slider - Default Theme
+ * 
+ * @author Tom Bigelajzen
+ * @see https://github.com/tombigel
+ * @license MIT
+ */
+
+/* Theme styling for CyclicSlider component */
+
+/* Range input styling */
+.cyclic-slider input[type="range"] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #3498db, #9b59b6);
+  outline: none;
+}
+
+.cyclic-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #3498db;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.cyclic-slider input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #3498db;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.cyclic-slider input[type="range"]:hover {
+  background: linear-gradient(to right, #2980b9, #8e44ad);
+}
+
+.cyclic-slider input[type="range"]:active::-webkit-slider-thumb,
+.cyclic-slider input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.1);
+  background: #3498db;
+  border-color: #fff;
+}
+
+.cyclic-slider input[type="range"]:active::-moz-range-thumb,
+.cyclic-slider input[type="range"]:hover::-moz-range-thumb {
+  transform: scale(1.1);
+  background: #3498db;
+  border-color: #fff;
+}
+
+/* Number input styling */
+.cyclic-slider input[type="number"] {
+  padding: 0.5em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+  transition: all 0.2s ease;
+  color: #444;
+}
+
+.cyclic-slider input[type="number"]:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  outline: none;
+} 
