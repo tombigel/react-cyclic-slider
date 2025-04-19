@@ -83,6 +83,8 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
 
       // Update value as the pointer moves, with proper min/max wrapping
       const onPointerMove = (e: PointerEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
         const newValue = Math.round(
           e.offsetX % offsetWidth / offsetWidth * (max - min)
         );
