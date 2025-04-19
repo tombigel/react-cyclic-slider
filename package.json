@@ -31,8 +31,11 @@
     "build:theme": "mkdir -p dist/theme && cp src/theme/cyclic-slider-theme.css dist/theme/",
     "build:lib": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types && npm run build:theme",
     "prepublishOnly": "npm run build:lib",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "update-version": "node scripts/update-version.js",
+    "version:patch": "npm version patch && npm run update-version",
+    "predeploy": "npm run version:patch && npm run build",
+    "deploy": "gh-pages -d build",
+    "postdeploy": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
