@@ -6,7 +6,8 @@
  */
 
 const fs = require('fs');
-const path = require('path');
+// path is not used, so let's remove it
+// const path = require('path');
 
 // Get current version from package.json
 const packageJson = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
@@ -41,6 +42,8 @@ filesToUpdate.forEach(file => {
       
       fs.writeFileSync(file, content);
       console.log(`Updated ${file}`);
+    } else {
+      console.log(`File not found: ${file}`);
     }
   } catch (err) {
     console.error(`Error updating ${file}:`, err);
