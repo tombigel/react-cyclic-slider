@@ -5,7 +5,7 @@ import './theme/cyclic-slider-theme.css';
 
 // Calculate the public URL based on environment
 const getPublicUrl = () => {
-  return process.env.PUBLIC_URL || '';
+  return import.meta.env.BASE_URL || '';
 };
 
 const App: React.FC = () => {

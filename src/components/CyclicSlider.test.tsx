@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import '@testing-library/jest-dom';
 import CyclicSlider from './CyclicSlider';
 
@@ -75,7 +76,7 @@ describe('CyclicSlider', () => {
   });
   
   it('calls onInput callback when input value changes', () => {
-    const onInputMock = jest.fn();
+    const onInputMock = vi.fn();
     render(
       <CyclicSlider
         value={45}
@@ -90,7 +91,7 @@ describe('CyclicSlider', () => {
   });
   
   it('calls onChange callback when input is completed', () => {
-    const onChangeMock = jest.fn();
+    const onChangeMock = vi.fn();
     render(
       <CyclicSlider
         value={45}
@@ -106,7 +107,7 @@ describe('CyclicSlider', () => {
   });
   
   it('handles wrapping around min/max values', () => {
-    const onInputMock = jest.fn();
+    const onInputMock = vi.fn();
     render(
       <CyclicSlider
         value={359}
