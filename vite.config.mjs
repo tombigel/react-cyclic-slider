@@ -9,6 +9,7 @@ export default defineConfig({
   base: '/react-cyclic-slider/',
   build: {
     outDir: 'build',
+    sourcemap: true,
   },
   resolve: {
     alias: {
