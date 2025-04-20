@@ -104,7 +104,7 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
       element.addEventListener("pointerup", () => {
         element.removeEventListener("pointermove", onPointerMove);
         element.releasePointerCapture(pointerId);
-        onChange && onChange(value);
+        onChange && requestAnimationFrame(() => onChange(value));
       }, { once: true });
     },
     [min, max, onInput, onChange, value]
