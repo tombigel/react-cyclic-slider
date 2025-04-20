@@ -24,9 +24,7 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent; /* Removes tap highlight */
 }
-.cyclic-slider input[type="range"]:active::-webkit-slider-thumb{
-    pointer-events: none;
-}
+
 /* Input with unit layout */
 .cyclic-slider .input-with-unit {
   position: relative;

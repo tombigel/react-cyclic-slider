@@ -120,7 +120,6 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
           max={max}
           step={step}
           value={value}
-          onInput={handleValueChange}
           onPointerUp={updateDataOnMouseUp}
           onPointerDown={cyclicHandler}
         />
