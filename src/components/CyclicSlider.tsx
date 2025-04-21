@@ -7,7 +7,7 @@
  * @license MIT
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './CyclicSlider.css';
 
 export interface CyclicSliderProps {
@@ -34,7 +34,8 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
   unit = ''
 }) => {
   const [value, setValue] = useState<number>(dataValue);
-
+  const tempValueWhileDragging = useRef<number>(dataValue);
+  
   // Update local state when the parent component changes the value prop
   useEffect(() => {
     if (dataValue !== value) {
@@ -43,8 +44,8 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataValue]);
 
-  // Handle changes from the input elements
-  const handleValueChange = useCallback(
+  // Handle changes from the number input
+  const onNumberInputInput = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue = event.target.valueAsNumber % max;
       setValue(newValue);
@@ -54,16 +55,16 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
     [max, onInput]
   );
 
-  // Call onChange callback when the user releases the slider
-  const updateDataOnMouseUp = useCallback(
-    () => {
-      onChange && onChange(value);
+  // Handle changes from the number input
+  const onNumberInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      onChange && onChange(event.target.valueAsNumber);
     },
-    [onChange, value]
+    [onChange]
   );
 
   // The core cyclic slider functionality
-  const cyclicHandler = useCallback(
+  const onSliderPointerDown = useCallback(
     (event: React.PointerEvent<HTMLInputElement>) => {
       // Prevent default browser behavior
       event.preventDefault();
@@ -73,11 +74,13 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
         nativeEvent: { offsetX },
         pointerId
       } = event;
+
       const element = target as HTMLInputElement;
       const { offsetWidth } = element;
 
       // Calculate initial value based on click position
       const initialValue = Math.round(offsetX / offsetWidth * (max - min));
+      tempValueWhileDragging.current = initialValue;
       setValue(initialValue);
       onInput && onInput(initialValue);
 
@@ -85,29 +88,34 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
       const onPointerMove = (e: PointerEvent) => {
         e.preventDefault();
         e.stopPropagation();
-        if (element.hasPointerCapture(pointerId)) {
-          const newValue = Math.round(
-            e.offsetX % offsetWidth / offsetWidth * (max - min)
-          );
 
-          const normalizedValue =
-          newValue < min ? max + newValue % max : newValue;
+        if (element.hasPointerCapture(pointerId)) {
+          const newValue = Math.round(e.offsetX % offsetWidth / offsetWidth * (max - min) + min) * step;
+          const normalizedValue = newValue < min ? max + newValue % max : newValue;
+          
+          tempValueWhileDragging.current = normalizedValue;
           setValue(normalizedValue);
           // Call onInput callback with the new value
           onInput && onInput(normalizedValue);
         }
       };
 
+      const onPointerCleanup = () => { 
+        element.removeEventListener("pointermove", onPointerMove);
+        element.releasePointerCapture(pointerId);
+        onChange && onChange(tempValueWhileDragging.current);
+        document.removeEventListener("pointerup", onPointerCleanup);
+        document.removeEventListener("pointercancel", onPointerCleanup);
+        console.log('onPointerCleanup', tempValueWhileDragging.current);
+      };
+
       // Set up event handling for pointer movement and release
       element.setPointerCapture(pointerId);
       element.addEventListener("pointermove", onPointerMove, { passive: false });
-      element.addEventListener("pointerup", () => {
-        element.removeEventListener("pointermove", onPointerMove);
-        element.releasePointerCapture(pointerId);
-        onChange && onChange(value);
-      }, { once: true });
+      document.addEventListener("pointerup", onPointerCleanup);
+      document.addEventListener("pointercancel", onPointerCleanup);
     },
-    [min, max, onInput, onChange, value]
+    [min, max, onInput, onChange]
   );
 
   return (
@@ -120,8 +128,7 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
           max={max}
           step={step}
           value={value}
-          onPointerUp={updateDataOnMouseUp}
-          onPointerDown={cyclicHandler}
+          onPointerDown={onSliderPointerDown}
         />
         <div className="input-with-unit">
           <input
@@ -130,8 +137,8 @@ const CyclicSlider: React.FC<CyclicSliderProps> = ({
             max={max}
             step={step}
             value={value}
-            onInput={handleValueChange}
-            onChange={updateDataOnMouseUp}
+            onInput={onNumberInputInput}
+            onChange={onNumberInputChange}
           />
           {unit && <span className="unit-suffix">{unit}</span>}
         </div>
