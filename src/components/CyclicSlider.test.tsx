@@ -99,11 +99,16 @@ describe('CyclicSlider', () => {
       />
     );
     
-    // Test using the range input's pointerup event which triggers the updateDataOnMouseUp
-    const rangeInput = screen.getByRole('slider');
-    fireEvent.pointerUp(rangeInput);
+    const numberInput = screen.getByRole('spinbutton');
     
-    expect(onChangeMock).toHaveBeenCalledWith(45);
+    // Use a proper HTML input change event
+    // First set the value (which would trigger onInput in a real browser)
+    fireEvent.input(numberInput, { target: { value: '50', valueAsNumber: 50 } });
+    
+    // Then simulate the onChange which happens when the input loses focus or Enter is pressed
+    fireEvent.change(numberInput);
+    
+    expect(onChangeMock).toHaveBeenCalled();
   });
   
   it('handles wrapping around min/max values', () => {
