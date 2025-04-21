@@ -15,6 +15,23 @@ Hey, here's what you get with this slider:
 - Comes with a handy number input for when you need to be precise
 - Optional units display (°, px, %, etc.) right next to the number input
 
+## How Cyclic Wrapping Works
+
+When a value exceeds the maximum or falls below the minimum:
+
+- **Values above max:** Wrap around to min + (value % max)
+  - Example: With range 0-360, a value of 370 becomes 10
+  - Example: With range 100-200, a value of 210 becomes 10 (210 % 200)
+  
+- **Values below min:** The component handles wrapping for values below the minimum
+
+This cyclic behavior makes the slider perfect for:
+
+- Angles (0-360 degrees)
+- Hue values in HSL color (0-360)
+- Time selection (hours, minutes)
+- And any other values that should wrap around at boundaries
+
 ## Installation
 
 ```bash
@@ -129,6 +146,53 @@ The component is versatile and can be used for various cyclic values:
 - **Clock Control:** 1-12 hours or 0-59 minutes
 - **Day of Week:** 0-6 for days of the week
 - **Month Selector:** 1-12 for months of the year
+- **Temperature Range:** -50 to 50 degrees
+- **Rotation:** -180 to 180 degrees
+
+### Custom Range Examples
+
+```jsx
+// Standard range (min=0, max>0)
+<CyclicSlider
+  value={5}
+  min={0}
+  max={10}
+  step={1}
+  label="Standard Range"
+  onChange={handleChange}
+/>
+
+// Positive range (min>0, max>min)
+<CyclicSlider
+  value={110}
+  min={100} 
+  max={200}
+  step={1}
+  label="Positive Range"
+  onChange={handleChange}
+/>
+
+// Range with negative min (min<0, max>0)
+<CyclicSlider
+  value={0}
+  min={-180}
+  max={180}
+  step={1}
+  label="Rotation (-180° to 180°)"
+  unit="°"
+  onChange={handleChange}
+/>
+
+// Fractional step values
+<CyclicSlider
+  value={2.5}
+  min={0}
+  max={10}
+  step={0.5}
+  label="Fractional Steps"
+  onChange={handleChange}
+/>
+```
 
 ## Development
 
