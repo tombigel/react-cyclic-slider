@@ -140,4 +140,97 @@ describe('CyclicSlider', () => {
     rerender(<CyclicSlider value={20} />);
     expect(rangeInput).toHaveValue('20');
   });
+
+  it('works correctly with min value larger than 0', () => {
+    const onInputMock = vi.fn();
+    render(
+      <CyclicSlider
+        value={120}
+        min={100}
+        max={200}
+        onInput={onInputMock}
+      />
+    );
+    
+    // Check inputs have correct attributes
+    const rangeInput = screen.getByRole('slider');
+    expect(rangeInput).toHaveAttribute('min', '100');
+    expect(rangeInput).toHaveAttribute('max', '200');
+    expect(rangeInput).toHaveValue('120');
+    
+    const numberInput = screen.getByRole('spinbutton');
+    expect(numberInput).toHaveValue(120);
+    
+    // Test wrapping with min > 0
+    fireEvent.input(numberInput, { target: { value: '210', valueAsNumber: 210 } });
+    // Should wrap to min + (210 - min) % range = 100 + (210 - 100) % 100 = 100 + 10 = 110
+    expect(onInputMock).toHaveBeenCalledWith(110);
+  });
+  
+  it('works correctly with negative min value', () => {
+    const onInputMock = vi.fn();
+    render(
+      <CyclicSlider
+        value={0}
+        min={-180}
+        max={180}
+        onInput={onInputMock}
+      />
+    );
+    
+    // Check inputs have correct attributes
+    const rangeInput = screen.getByRole('slider');
+    expect(rangeInput).toHaveAttribute('min', '-180');
+    expect(rangeInput).toHaveAttribute('max', '180');
+    expect(rangeInput).toHaveValue('0');
+    
+    const numberInput = screen.getByRole('spinbutton');
+    expect(numberInput).toHaveValue(0);
+    
+    // Test normal input within range
+    fireEvent.input(numberInput, { target: { value: '-45', valueAsNumber: -45 } });
+    expect(onInputMock).toHaveBeenCalledWith(-45);
+    
+    // Test wrapping with negative min
+    fireEvent.input(numberInput, { target: { value: '190', valueAsNumber: 190 } });
+    // Should wrap to min + (190 - min) % range = -180 + (190 - (-180)) % 360 = -180 + 10 = -170
+    expect(onInputMock).toHaveBeenCalledWith(-170);
+    
+    // Test going below min
+    fireEvent.input(numberInput, { target: { value: '-190', valueAsNumber: -190 } });
+    // Should wrap to max - (min - (-190)) % range = 180 - ((-180) - (-190)) % 360 = 180 - 10 = 170
+    expect(onInputMock).toHaveBeenCalledWith(170);
+  });
+  
+  it('handles fractional (non-integer) step values correctly', () => {
+    const onInputMock = vi.fn();
+    render(
+      <CyclicSlider
+        value={2.5}
+        min={0}
+        max={10}
+        step={0.5}
+        onInput={onInputMock}
+      />
+    );
+    
+    // Check inputs have correct attributes
+    const rangeInput = screen.getByRole('slider');
+    expect(rangeInput).toHaveAttribute('min', '0');
+    expect(rangeInput).toHaveAttribute('max', '10');
+    expect(rangeInput).toHaveAttribute('step', '0.5');
+    expect(rangeInput).toHaveValue('2.5');
+    
+    const numberInput = screen.getByRole('spinbutton');
+    expect(numberInput).toHaveValue(2.5);
+    
+    // Test fractional input
+    fireEvent.input(numberInput, { target: { value: '3.5', valueAsNumber: 3.5 } });
+    expect(onInputMock).toHaveBeenCalledWith(3.5);
+    
+    // Test wrapping with fractional value
+    fireEvent.input(numberInput, { target: { value: '10.5', valueAsNumber: 10.5 } });
+    // Should wrap to: min + (10.5 - min) % range = 0 + (10.5 - 0) % 10 = 0.5
+    expect(onInputMock).toHaveBeenCalledWith(0.5);
+  });
 }); 
