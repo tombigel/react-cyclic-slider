@@ -34,7 +34,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "deploy:version": "npm run version:patch && npm run predeploy && npm run deploy",
-    "postdeploy": "git push && git push --tags"
+    "postdeploy": "git push && git push --tags",
+    "publish-and-deploy": "npm run test && npm run version:patch && npm run deploy && npm publish"
   },
   "repository": {
     "type": "git",
