@@ -8,6 +8,10 @@
 
 /* Theme styling for CyclicSlider component */
 
+.cyclic-slider {
+  color-scheme: light dark;
+}
+
 /* Range input styling */
 .cyclic-slider input[type="range"] {
   cursor: pointer;
@@ -64,11 +68,12 @@
 /* Number input styling */
 .cyclic-slider input[type="number"] {
   padding: 0.5em;
-  border: 1px solid #ddd;
+  border: 1px solid light-dark(#ddd, #444);
   border-radius: 4px;
   font-size: 1em;
   transition: all 0.2s ease;
-  color: #444;
+  color: light-dark(#444, #e0e0e0);
+  background-color: light-dark(#fff, #333);
 }
 
 .cyclic-slider input[type="number"]:focus {
