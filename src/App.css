@@ -277,4 +277,82 @@ footer a:hover {
     width: 100%;
     max-width: 450px;
   }
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    margin: 0;
+  }
+
+  .app {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  .app h1 {
+    color: #e0e0e0;
+  }
+
+  .demo-section {
+    background-color: #2a2a2a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .demo-section h2 {
+    color: #e0e0e0;
+  }
+
+  .angle-circle {
+    border-color: #444;
+    background: linear-gradient(to right, #2a2a2a, #333);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .angle-value,
+  .hue-value,
+  .hour-value {
+    color: #e0e0e0;
+  }
+
+  .clock-face {
+    background-color: #2a2a2a;
+    border-color: #3498db;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .hour-number {
+    color: #e0e0e0;
+  }
+
+  .demo-control {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .demo-control label {
+    color: #e0e0e0;
+  }
+
+
+  .update-mode {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .update-mode p {
+    color: #e0e0e0;
+  }
+
+  .radio-group label {
+    color: #e0e0e0;
+  }
+
+  footer {
+    color: #999;
+    border-top-color: #333;
+  }
+
+  footer a {
+    color: #5dade2;
+  }
 } 
