@@ -2,6 +2,8 @@
 /src
 
 # Development files
+/demo
+/tests
 /.history
 /.git
 /.github

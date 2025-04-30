@@ -1,7 +1,11 @@
+/// <reference types="vite/client" />
+
 import React, { useState } from 'react';
-import CyclicSlider from './components/CyclicSlider';
+// Use the alias defined in vite.config.mjs
+import CyclicSlider from 'react-cyclic-slider';
 import './App.css';
-import './theme/cyclic-slider-theme.css';
+// Correct relative path to theme file
+import '../src/theme/cyclic-slider-theme.css';
 
 // Calculate the public URL based on environment
 const getPublicUrl = () => {

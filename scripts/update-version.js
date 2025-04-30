@@ -18,7 +18,7 @@ console.log(`Updating version references to ${version}...`);
 // Files to update
 const filesToUpdate = [
   'README.md',
-  'public/index.html'
+  'demo/index.html'
 ];
 
 filesToUpdate.forEach(file => {

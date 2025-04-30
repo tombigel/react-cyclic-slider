@@ -1,26 +1,21 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
-import { configDefaults } from 'vitest/config';
+// import { configDefaults } from 'vitest/config'; // No longer needed here
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  root: 'demo',
   base: '/react-cyclic-slider/',
   build: {
-    outDir: 'build',
+    outDir: '../build',
     sourcemap: true,
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      'react-cyclic-slider': resolve(__dirname, 'src/components'),
     },
   },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/setupTests.ts',
-    css: true,
-    exclude: [...configDefaults.exclude, 'e2e/**'],
-  }
+  // test: { ... } // Test config removed, moved to vitest.config.mjs
 }); 
